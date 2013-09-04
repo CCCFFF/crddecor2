@@ -1,0 +1,27 @@
+<h1>Listing space_categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @space_categories.each do |space_category| %>
+      <tr>
+        <td><%= space_category.name %></td>
+        <td><%= link_to 'Show', space_category %></td>
+        <td><%= link_to 'Edit', edit_space_category_path(space_category) %></td>
+        <td><%= link_to 'Destroy', space_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Space category', new_space_category_path %>

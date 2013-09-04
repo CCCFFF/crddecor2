@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @space_picture.name %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @space_picture.source %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @space_picture.space_id %>
+</p>
+
+<%= link_to 'Edit', edit_space_picture_path(@space_picture) %> |
+<%= link_to 'Back', space_pictures_path %>

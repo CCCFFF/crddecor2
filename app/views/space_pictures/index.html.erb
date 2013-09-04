@@ -1,0 +1,31 @@
+<h1>Listing space_pictures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Source</th>
+      <th>Space</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @space_pictures.each do |space_picture| %>
+      <tr>
+        <td><%= space_picture.name %></td>
+        <td><%= space_picture.source %></td>
+        <td><%= space_picture.space_id %></td>
+        <td><%= link_to 'Show', space_picture %></td>
+        <td><%= link_to 'Edit', edit_space_picture_path(space_picture) %></td>
+        <td><%= link_to 'Destroy', space_picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Space picture', new_space_picture_path %>

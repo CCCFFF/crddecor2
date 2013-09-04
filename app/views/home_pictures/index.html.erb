@@ -1,0 +1,31 @@
+<h1>Listing home_pictures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Home</th>
+      <th>Source</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @home_pictures.each do |home_picture| %>
+      <tr>
+        <td><%= home_picture.name %></td>
+        <td><%= home_picture.home_id %></td>
+        <td><%= home_picture.source %></td>
+        <td><%= link_to 'Show', home_picture %></td>
+        <td><%= link_to 'Edit', edit_home_picture_path(home_picture) %></td>
+        <td><%= link_to 'Destroy', home_picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Home picture', new_home_picture_path %>
