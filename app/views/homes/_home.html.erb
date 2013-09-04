@@ -1,4 +1,5 @@
 <li>
-   <%= home.name %><%= home.city%><%= link_to "View Home", home_url(home.id), :class => "btn" %>
+   <h4><%= home.name %></h4>
+   <%= home.city%><%= link_to "Edit Home", edit_home_url(home.id), :class => "btn-info btn-xs" %>
 
   </li>

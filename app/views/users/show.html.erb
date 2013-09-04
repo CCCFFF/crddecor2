@@ -4,9 +4,11 @@
   <%= link_to "Add New Home", new_home_url, :class => "btn btn-primary" %>
 </div>
 <div>
+  <h1>My Property</h1>
     <ul style="list-style: none;">
       <% @user.homes.each do |the_home| %>
           <%= render '/homes/home', :home => the_home %>
+          <div class="span 3">
            <ul style="list-style: none;">
                 <% the_home.spaces.each do |the_space| %>
                        <li>
@@ -25,6 +27,7 @@
                   <% the_space_pic.thoughts.each do |the_thought| %>
 
                     <%= render '/thoughts/thought', :thought => the_thought %>
+                  </div>
                   <% end %>
           <% end %>
           <% end %>
@@ -32,38 +35,4 @@
       <% end %>
   </ul>
 </div>
-<div>
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
-<p>
-  <strong>Country:</strong>
-  <%= @user.country %>
-</p>
-<!-- <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p> -->
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-</div>
