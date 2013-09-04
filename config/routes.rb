@@ -1,4 +1,11 @@
 Crddecor2::Application.routes.draw do
+
+
+  # Session Routes
+  get '/sessions/new' => 'sessions#new', as: "new_session"
+  post '/sessions' => 'sessions#create', as: "sessions"
+  delete '/sessions' => 'sessions#destroy'
+
   resources :space_categories
 
   resources :thoughts
@@ -53,7 +60,7 @@ Crddecor2::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
