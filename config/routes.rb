@@ -1,6 +1,8 @@
 Crddecor2::Application.routes.draw do
 
-
+   root "homepages#index"
+  #Homepage
+  get 'homepage' => 'homepage#index'
   # Session Routes
   get '/sessions/new' => 'sessions#new', as: "new_session"
   post '/sessions' => 'sessions#create', as: "sessions"
