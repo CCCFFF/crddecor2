@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :home_id %><br>
-    <%= f.number_field :home_id %>
+    <%= f.collection_select :home_id, Home.all.order("name ASC"), :id, :name, :prompt => "Select a Home" %>
   </div>
   <div class="field">
     <%= f.label :source %><br>

@@ -8,7 +8,7 @@
       <% @user.homes.each do |the_home| %>
           <%= render '/homes/home', :home => the_home %>
            <ul style="list-style: none;">
-                <% the_home.rooms.each do |the_space| %>
+                <% the_home.spaces.each do |the_space| %>
                        <li>
                       <%= render '/spaces/space', :space => the_space %>
                       </li>

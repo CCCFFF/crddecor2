@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.collection_select :name, SpaceCategory.all.order("name ASC"), :id, :name, :prompt => "Select a Space Type" %>
+    <%= f.collection_select :category, SpaceCategory.all.order("name ASC"), :name, :name, :prompt => "Select a Space Type" %>
   </div>
   <div class="field">
     <%= f.label :size %><br>
