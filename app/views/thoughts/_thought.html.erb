@@ -1,0 +1,5 @@
+          <li>
+            <%= thought.text %><br>
+            <% @user = User.find_by(thought.user_id) %>
+            <%= "Commenter: #{@user.first_name} #{@user.last_name}" %>
+          </li>

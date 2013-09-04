@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :space_id %><br>
-    <%= f.number_field :space_id %>
+    <%= f.collection_select :room_id, Space.all.order("category ASC"), :id, :name, :prompt => "Select a Space" %>
   </div>
   <div class="actions">
     <%= f.submit %>

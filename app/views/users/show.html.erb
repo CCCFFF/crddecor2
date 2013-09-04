@@ -1,5 +1,38 @@
 <p id="notice"><%= notice %></p>
+<div>
+  <%= link_to "Edit Profile", edit_user_path(@user), :class => 'btn btn-primary' %>
+  <%= link_to "Add New Home", new_home_url, :class => "btn btn-primary" %>
+</div>
+<div>
+    <ul style="list-style: none;">
+      <% @user.homes.each do |the_home| %>
+          <%= render '/homes/home', :home => the_home %>
+           <ul style="list-style: none;">
+                <% the_home.rooms.each do |the_space| %>
+                       <li>
+                      <%= render '/spaces/space', :space => the_space %>
+                      </li>
+                      <h3>Pictures to <%= "#{the_space.name}" %></h3>
 
+              </ul>
+
+              <ul style="list-style: none;">
+                    <% the_space.space_pictures.each do |the_space_pic| %>
+                          <%= render '/space_pictures/space_picture', :space_pic => the_space_pic %>
+
+                </ul>
+                <ul>
+                  <% the_space_pic.thoughts.each do |the_thought| %>
+
+                    <%= render '/thoughts/thought', :thought => the_thought %>
+                  <% end %>
+          <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+  </ul>
+</div>
+<div>
 <p>
   <strong>First name:</strong>
   <%= @user.first_name %>
@@ -14,26 +47,23 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
 <p>
   <strong>City:</strong>
   <%= @user.city %>
 </p>
-
 <p>
   <strong>State:</strong>
   <%= @user.state %>
 </p>
-
 <p>
   <strong>Country:</strong>
   <%= @user.country %>
 </p>
+<!-- <p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p> -->
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
