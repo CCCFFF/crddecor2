@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Category</th>
       <th>Size</th>
@@ -16,10 +17,13 @@
   <tbody>
     <% @spaces.each do |space| %>
       <tr>
+        <% pic = SpacePicture.find_by(:space_id => space.id) %>
+        <td><%= image_tag pic.source %></td>
         <td><%= space.name %></td>
         <td><%= space.category %></td>
         <td><%= space.size %></td>
-        <td><%= space.home_id %></td>
+        <%= house = Home.find_by(:id => space.home_id) %>
+        <td><%= house.name %></td>
         <td><%= link_to 'Show', space %></td>
         <td><%= link_to 'Edit', edit_space_path(space) %></td>
         <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>

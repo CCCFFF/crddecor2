@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>User</th>
       <th>City</th>
@@ -17,8 +18,11 @@
   <tbody>
     <% @homes.each do |home| %>
       <tr>
+        <% pic = HomePicture.find_by(:id => home.id) %>
+        <td><%= image_tag pic.source %></td>
         <td><%= home.name %></td>
-        <td><%= home.user_id %></td>
+        <% person = User.find_by(:id => home.user_id) %>
+        <td><%= person.first_name %> <%= person.last_name %></td>
         <td><%= home.city %></td>
         <td><%= home.state %></td>
         <td><%= home.country %></td>
