@@ -15,5 +15,10 @@
   <%= @home_picture.source %>
 </p>
 
+<p>
+  <strong>Uploaded Image</strong>
+  <%= image_tag @home_picture.image %>
+</p>
+
 <%= link_to 'Edit', edit_home_picture_path(@home_picture) %> |
 <%= link_to 'Back', home_pictures_path %>

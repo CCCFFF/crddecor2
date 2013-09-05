@@ -20,8 +20,8 @@
     <%= f.collection_select :home_id, Home.all.order("name ASC"), :id, :name, :prompt => "Select a Home" %>
   </div>
   <div class="field">
-    <%= f.label :source %><br>
-    <%= f.text_field :source %>
+    <%= f.label "upload your picture" %><br>
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>

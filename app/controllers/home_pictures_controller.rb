@@ -69,6 +69,6 @@ class HomePicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def home_picture_params
-      params.require(:home_picture).permit(:name, :home_id, :source)
+      params.require(:home_picture).permit(:name, :home_id, :image)
     end
 end

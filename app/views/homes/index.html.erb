@@ -12,6 +12,7 @@
   <thead>
     <tr>
       <th></th>
+      <th></th>
       <th>Name</th>
       <th>User</th>
       <th>City</th>
@@ -26,7 +27,9 @@
 
   <tbody>
     <% @homes.each do |home| %>
+
       <tr>
+
         <% pic = HomePicture.find_by(:id => home.id) %>
         <% if pic.present? %>
         <td><%= image_tag pic.source %></td>
