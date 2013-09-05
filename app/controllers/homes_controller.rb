@@ -4,7 +4,10 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
-    @homes = Home.all
+    @page_number = params[:page].to_i
+    @homes = Home.order("name").offset((@page_number - 1) * 10).limit(10)
+    #get Kaminari to work for pagination
+    #@homes = Home.order(:name).page(params[:page]).per(10)
   end
 
   # GET /homes/1

@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @page_number = params[:page].to_i
+    @users = User.order("last_name").offset((@page_number - 1) * 10).limit(10)
   end
 
   # GET /users/1

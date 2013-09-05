@@ -4,7 +4,8 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    @page_number = params[:page].to_i
+    @spaces = Space.order("name").offset((@page_number - 1) * 10).limit(10)
   end
 
   # GET /spaces/1

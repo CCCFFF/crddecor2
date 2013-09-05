@@ -1,5 +1,13 @@
 <h1>Listing homes</h1>
 
+
+<% @page_number = 1 if @page_number < 1 %>
+
+<%= link_to "Prev", "/homes?page=#{@page_number - 1 }" %>
+<%= link_to "Next", "/homes?page=#{@page_number + 1 }" %>
+ <!-- Get Kaminari to work for pagination
+<%#= paginate @homes %> -->
+
 <table>
   <thead>
     <tr>
