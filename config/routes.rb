@@ -1,5 +1,7 @@
 Crddecor2::Application.routes.draw do
 
+  resources :space_votes
+
   resources :votes
 
    root "homepages#index"

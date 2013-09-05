@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905154826) do
+ActiveRecord::Schema.define(version: 20130905161214) do
 
   create_table "home_pictures", force: true do |t|
     t.string   "name"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20130905154826) do
     t.datetime "updated_at"
   end
 
+  create_table "space_votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "space_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spaces", force: true do |t|
     t.string   "name"
     t.string   "category"
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(version: 20130905154826) do
     t.integer  "home_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "space_vote_tally", default: 0
   end
 
   create_table "thoughts", force: true do |t|

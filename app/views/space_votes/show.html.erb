@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @space_vote.user_id %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @space_vote.space_id %>
+</p>
+
+<%= link_to 'Edit', edit_space_vote_path(@space_vote) %> |
+<%= link_to 'Back', space_votes_path %>

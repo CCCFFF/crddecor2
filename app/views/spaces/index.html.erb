@@ -8,6 +8,8 @@
       <th>Category</th>
       <th>Size</th>
       <th>Home</th>
+      <th>Votes</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,7 +25,22 @@
         <td><%= space.category %></td>
         <td><%= space.size %></td>
         <%= house = Home.find_by(:id => space.home_id) %>
+        <% if house.present? %>
         <td><%= house.name %></td>
+        <% else %>
+        <td>No House Name</td>
+        <% end %>
+        <td><%= space.space_vote_tally %></td>
+        <td>
+             <% if current_user.present? %>
+          <%= form_tag space_votes_url, :class => "form-horizontal" do %>
+            <%= hidden_field_tag :space_id, space.id %>
+            <%= hidden_field_tag :user_id, current_user.id %>
+
+            <%= button_tag '<i class="icon-thumbs-up"></i>'.html_safe, :class => "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </td>
         <td><%= link_to 'Show', space %></td>
         <td><%= link_to 'Edit', edit_space_path(space) %></td>
         <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>

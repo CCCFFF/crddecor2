@@ -1,0 +1,29 @@
+<h1>Listing space_votes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Space</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @space_votes.each do |space_vote| %>
+      <tr>
+        <td><%= space_vote.user_id %></td>
+        <td><%= space_vote.space_id %></td>
+        <td><%= link_to 'Show', space_vote %></td>
+        <td><%= link_to 'Edit', edit_space_vote_path(space_vote) %></td>
+        <td><%= link_to 'Destroy', space_vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Space vote', new_space_vote_path %>
