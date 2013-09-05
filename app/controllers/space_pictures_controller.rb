@@ -69,6 +69,6 @@ class SpacePicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_picture_params
-      params.require(:space_picture).permit(:name, :source, :space_id)
+      params.require(:space_picture).permit(:name, :image, :space_id)
     end
 end

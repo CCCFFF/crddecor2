@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Space:</strong>
-  <%= @space_picture.space_id %>
+  <strong>Uploaded Image</strong>
+  <%= image_tag @space_picture.image %>
 </p>
 
 <%= link_to 'Edit', edit_space_picture_path(@space_picture) %> |
