@@ -11,6 +11,12 @@
   <div class="col-lg-12">
     <ul style="list-style: none;">
       <% @user.homes.each do |the_home| %>
+          <% pic = HomePicture.find_by(:home_id => the_home.id) %>
+        <% if pic.present? %>
+            <%= image_tag pic.image %>
+        <% else %>
+         <strong>No Picture</strong>
+        <% end %>
           <%= render '/homes/home', :home => the_home %>
           <br>
           <h4>Spaces for <%= "#{the_home.name}" %></h4>

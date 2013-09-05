@@ -30,9 +30,9 @@
 
       <tr>
 
-        <% pic = HomePicture.find_by(:id => home.id) %>
+        <% pic = HomePicture.find_by(:home_id => home.id) %>
         <% if pic.present? %>
-        <td><%= image_tag pic.source %></td>
+        <td><%= image_tag pic.image %></td>
         <% else %>
          <td>No Picture</td>
         <% end %>

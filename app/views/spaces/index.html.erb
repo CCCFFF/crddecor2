@@ -25,7 +25,11 @@
     <% @spaces.each do |space| %>
       <tr>
         <% pic = SpacePicture.find_by(:space_id => space.id) %>
-        <td><%= image_tag pic.source %></td>
+        <% if pic.present? %>
+        <td><%= image_tag pic.image %></td>
+        <% else %>
+        <td>No Picture</td>
+        <% end %>
         <td><%= space.name %></td>
         <td><%= space.category %></td>
         <td><%= space.size %></td>
