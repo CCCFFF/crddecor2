@@ -1,5 +1,7 @@
 Crddecor2::Application.routes.draw do
 
+  resources :votes
+
    root "homepages#index"
   #Homepage
   get 'homepage' => 'homepage#index'

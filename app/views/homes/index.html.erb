@@ -26,6 +26,16 @@
         <td><%= home.city %></td>
         <td><%= home.state %></td>
         <td><%= home.country %></td>
+        <td>
+        <% if current_user.present? %>
+          <%= form_tag votes_url, :class => "form-horizontal" do %>
+            <%= hidden_field_tag :home_id, home.id %>
+            <%= hidden_field_tag :user_id, current_user.id %>
+
+            <%= button_tag '<i class="icon-thumbs-up"></i>'.html_safe, :class => "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </td
         <td><%= link_to 'Show', home %></td>
         <td><%= link_to 'Edit', edit_home_path(home) %></td>
         <td><%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %></td>
