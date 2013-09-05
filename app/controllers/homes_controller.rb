@@ -8,6 +8,10 @@ class HomesController < ApplicationController
     @homes = Home.order("name").offset((@page_number - 1) * 10).limit(10)
     #get Kaminari to work for pagination
     #@homes = Home.order(:name).page(params[:page]).per(10)
+
+      if params[:search_home_city].present?
+        @homes = Home.where("city LIKE ?", "%#{params[:search_home_city]}")
+      end
   end
 
   # GET /homes/1

@@ -6,6 +6,10 @@ class SpacesController < ApplicationController
   def index
     @page_number = params[:page].to_i
     @spaces = Space.order("name").offset((@page_number - 1) * 10).limit(10)
+
+    if params[:search_space_name].present?
+      @spaces = Space.where('name LIKE ?', "%#{params[:search_space_name]}")
+    end
   end
 
   # GET /spaces/1

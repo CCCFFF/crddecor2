@@ -35,14 +35,20 @@
           <li><%= link_to "Sign In", new_session_url %></li>
           <% end %>
           <li><%= link_to "Homes", homes_url %></li>
-          <li><%= link_to "Users", users_url %></li>
+          <li><%= link_to "owners", users_url %></li>
           <li><%= link_to "Spaces and Rooms", spaces_url %></li>
           <li><%= link_to "Pictures", space_pictures_url %></li>
           <li><%= link_to "Thoughts", thoughts_url %></li>
 
 
           <%= form_tag homes_url, method: 'get', class: 'navbar-form navbar-left' do %>
-            <%= text_field_tag :search_term, "", class: 'search-query', placeholder: 'Search by Home..' %>
+            <%= text_field_tag :search_home_city, "", class: 'search-query', placeholder: 'Search homes by city...' %>
+          <% end %>
+          <%= form_tag users_url, method: 'get', class: 'navbar-form navbar-left' do %>
+            <%= text_field_tag :search_user_name, "", class: 'search-query', placeholder: 'Search owners by last name...' %>
+          <% end %>
+          <%= form_tag spaces_url, method: 'get', class: 'navbar-form navbar-left' do %>
+            <%= text_field_tag :search_space_name, "", class: 'search-query', placeholder: 'Search spaces by type...' %>
           <% end %>
         </ul>
       </div>
