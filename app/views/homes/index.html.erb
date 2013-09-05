@@ -19,7 +19,11 @@
     <% @homes.each do |home| %>
       <tr>
         <% pic = HomePicture.find_by(:id => home.id) %>
+        <% if pic.present? %>
         <td><%= image_tag pic.source %></td>
+        <% else %>
+         <td>No Picture</td>
+        <% end %>
         <td><%= home.name %></td>
         <% person = User.find_by(:id => home.user_id) %>
         <td><%= person.first_name %> <%= person.last_name %></td>
