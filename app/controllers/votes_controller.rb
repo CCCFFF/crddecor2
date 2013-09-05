@@ -1,6 +1,17 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+ before_action :find_vote, :only => [:show, :edit, :update, :destroy]
+  before_action :current_user_must_own_vote, :only => [:edit, :update, :destroy]
 
+
+def find_vote
+  @vote = Vote.find_by(params[:id])
+end
+
+def current_user_must_own_vote
+  if @vote.user != current_user
+    redirect_to homes_url, :notice => "Not authorized for that."
+  end
+  end
   # GET /votes
   # GET /votes.json
   def index
@@ -15,6 +26,9 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
+    if current_user.blank?
+      redirect_to homes_url, :notice => "Please sign in to vote."
+    end
   end
 
   # GET /votes/1/edit
@@ -24,7 +38,9 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(vote_params)
+    @vote = Vote.new
+    @vote.user_id = current_user.id
+    @vote.home_id = params[:home_id]
 
     respond_to do |format|
       if @vote.save
@@ -40,8 +56,11 @@ class VotesController < ApplicationController
   # PATCH/PUT /votes/1
   # PATCH/PUT /votes/1.json
   def update
+    @vote.user_id = params[:user_id]
+    @vote.home_id = params[:home_id]
+
     respond_to do |format|
-      if @vote.update(vote_params)
+      if @vote.save
         format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
         format.json { head :no_content }
       else
@@ -56,19 +75,8 @@ class VotesController < ApplicationController
   def destroy
     @vote.destroy
     respond_to do |format|
-      format.html { redirect_to votes_url }
+      format.html { redirect_to homes_url }
       format.json { head :no_content }
     end
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vote
-      @vote = Vote.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def vote_params
-      params.require(:vote).permit(:user_id, :movie_id)
-    end
 end

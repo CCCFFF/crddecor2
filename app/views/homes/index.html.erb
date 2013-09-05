@@ -9,6 +9,7 @@
       <th>City</th>
       <th>State</th>
       <th>Country</th>
+      <th>Votes</th>
       <th></th>
       <th></th>
       <th></th>
@@ -30,6 +31,7 @@
         <td><%= home.city %></td>
         <td><%= home.state %></td>
         <td><%= home.country %></td>
+        <td><%= home.vote_tally %></td>
         <td>
         <% if current_user.present? %>
           <%= form_tag votes_url, :class => "form-horizontal" do %>
