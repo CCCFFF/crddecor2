@@ -23,6 +23,9 @@ gem 'coffee-rails', '~> 4.0.0'
 #Pagination
 gem 'kaminari'
 
+#Amazon
+gem 'aws-sdk'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
