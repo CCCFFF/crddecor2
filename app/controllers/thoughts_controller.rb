@@ -25,6 +25,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts.json
   def create
     @thought = Thought.new(thought_params)
+    @thought.user_id = current_user.id
 
     respond_to do |format|
       if @thought.save
