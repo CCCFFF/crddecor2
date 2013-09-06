@@ -4,8 +4,17 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
+
+    @sort_direction = params[:sort] || 'asc'
     @page_number = params[:page].to_i
-    @spaces = Space.order("name").offset((@page_number - 1) * 10).limit(10)
+    @spaces = Space.order("category #{@sort_direction}").offset((@page_number - 1) * 10).limit(10)
+
+    if @sort_direction == 'asc'
+      @sort_direction = 'desc'
+    else
+      @sort_direction = 'asc'
+    end
+
 
     if params[:search_space_name].present?
       @spaces = Space.where('name LIKE ?', "%#{params[:search_space_name]}")
