@@ -1,4 +1,4 @@
-          <li>
+          <li id="thought_<%= thought.id %>">
             <%= thought.text %><br>
             <% user = User.find_by(:id => thought.user_id) %>
             <%= "Commenter: #{user.first_name} #{user.last_name}" %>

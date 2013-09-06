@@ -15,6 +15,8 @@ class HomesController < ApplicationController
         @sort_direction = 'asc'
       end
 
+      #@homes.select { city == homes[:city]}
+
       if params[:search_home_city].present?
         @homes = Home.where("city LIKE ?", "%#{params[:search_home_city]}")
       end
