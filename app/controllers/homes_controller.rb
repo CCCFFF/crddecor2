@@ -4,10 +4,16 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
+    @sort_direction = params[:sort]  || 'asc'
     @page_number = params[:page].to_i
-    @homes = Home.order("name").offset((@page_number - 1) * 10).limit(10)
+    @homes = Home.order("city #{@sort_direction}").offset((@page_number - 1) * 10).limit(10)
     #get Kaminari to work for pagination
     #@homes = Home.order(:name).page(params[:page]).per(10)
+      if @sort_direction == 'asc'
+        @sort_direction = 'desc'
+      else
+        @sort_direction = 'asc'
+      end
 
       if params[:search_home_city].present?
         @homes = Home.where("city LIKE ?", "%#{params[:search_home_city]}")
