@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     if params[:search_user_name].present?
       @users = User.where('last_name LIKE ?', "%#{params[:search_user_name]}")
     end
+
   end
 
   # GET /users/1

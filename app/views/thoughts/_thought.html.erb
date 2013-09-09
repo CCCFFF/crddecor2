@@ -1,5 +1,7 @@
-          <li id="thought_<%= thought.id %>">
+          <li id="thought_<%= thought.id %>" class="media-list">
             <%= thought.text %><br>
             <% user = User.find_by(:id => thought.user_id) %>
             <%= "Commenter: #{user.first_name} #{user.last_name}" %>
+            <%= link_to '<i class="icon-trash"></i>'.html_safe, thought, method: :delete, remote: true %>
+            <%= link_to '<i class="icon-edit"></i>'.html_safe, thought, method: :delete, remote: true %>
           </li>

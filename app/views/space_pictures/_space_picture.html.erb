@@ -1,4 +1,17 @@
- <li>
-      <%= image_tag space_pic.image %> <%= link_to "Add Thought", new_thought_url, :class => "btn btn-info btn-xs" %>
+ <li class= "media-list">
+
+      <%= image_tag space_pic.image, :class => "media-object user-show-pic" %> <%= link_to "Add Thought", new_thought_url, :class => "btn btn-info btn-xs" %>
+      <li class="media-list">
+        <h5>Thoughts for <%= "#{space_pic.name}" %></h5>
+        <ul class="media-list">
+<% space_pic.thoughts.each do |the_thought| %>
+<li>
+            <%= render '/thoughts/thought', :thought => the_thought %>
+          </li>
+
+                    <% end %>
+                  </ul>
+                  </li>
+      <%#= render "/thoughts/form", :thought => thought  %>
 
     </li>
