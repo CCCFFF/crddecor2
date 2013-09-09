@@ -1,5 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<% space_pics = SpacePicture.where(:space_id => @space.id) %>
+    <% space_pics.each do |space_pic| %>
+      <%= image_tag space_pic.image %>
+    <% pic_thoughts = Thought.where(:space_picture_id => space_pic.id) %>
+  <ul>
+        <% pic_thoughts.each do |pic_thought| %>
+    <li>
+      <%= pic_thought.text %>
+      <% user = User.find_by(:id => pic_thought.user_id) %>
+            <%= "Commenter: #{user.first_name} #{user.last_name}" %>
+      </li>
+    <% end %>
+    </ul>
+<h3>Add A Thought</h3>
+<%= form_for Thought.new do |f| %>
+  <%= f.text_field :text, placeholder: "Add A Thought" %>
+  <%= f.hidden_field :space_picture_id, :value => space_pic.id %>
+  <%= f.submit "Save Thought" %>
+<% end %>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @space.name %>
@@ -19,6 +39,8 @@
   <strong>Home:</strong>
   <%= @space.home_id %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_space_path(@space) %> |
 <%= link_to 'Back', spaces_path %>

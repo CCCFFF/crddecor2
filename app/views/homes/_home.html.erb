@@ -1,14 +1,14 @@
-<li>
+
 
 
    <h4><%= home.name %></h4>
    <%= home.city%>,<%= home.state %>  <%= link_to "Edit Home", edit_home_url(home.id), :class => "btn-info btn-xs" %> <%= link_to "Add Home Picture", new_home_picture_url, :class => "btn btn-info btn-xs" %>  <%= link_to "Add New Space", new_space_url, :class => "btn-info btn-xs" %>
   <h4>Spaces for <%= "#{home.name}" %></h4>
-       <ul class="media-list">
+
       <% home.spaces.each do |the_space| %>
-         <li>
+
         <%= render '/spaces/space', :space => the_space %>
-        </li>
+
         <% end %>
-    </ul>
-  </li>
+
+
