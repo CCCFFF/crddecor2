@@ -1,12 +1,8 @@
 
-<div class="thumbnail">
       <%= image_tag space_pic.image, :class => "media-object user-show-pic" %> <%= link_to "Add Thought", new_thought_url, :class => "btn btn-info btn-xs" %>
-<div class="caption">
 <% space_pic.thoughts.each do |the_thought| %>
             <%= render '/thoughts/thought', :thought => the_thought %>
 
                     <% end %>
-</div>
       <%#= render "/thoughts/form", :thought => thought  %>
 
-</div>

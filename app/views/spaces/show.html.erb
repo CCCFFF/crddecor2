@@ -4,10 +4,10 @@
     <% space_pics.each do |space_pic| %>
       <%= image_tag space_pic.image %>
     <% pic_thoughts = Thought.where(:space_picture_id => space_pic.id) %>
-  <ul>
+  <ul id="thought_list">
         <% pic_thoughts.each do |pic_thought| %>
     <li id="thought_<%= pic_thought.id %>" >
-      <%= pic_thought.text %> <%= link_to '<i class="icon-trash"></i>'.html_safe, pic_thought, method: :delete, remote: true %>
+      <%= pic_thought.text %> <%= link_to '<i class="icon-trash"></i>'.html_safe, pic_thought, method: :delete, remote: true %><%= link_to '<i class="icon-edit"></i>'.html_safe, pic_thought, method: :patch, remote: true %>
       <% user = User.find_by(:id => pic_thought.user_id) %>
             <%= "Commenter: #{user.first_name} #{user.last_name}" %>
       </li>
@@ -15,11 +15,13 @@
     </ul>
     <%= link_to "Add A New Picture", new_space_picture_url, :class => "btn btn-info btn-xs" %>
 <h3>Add A Thought</h3>
-<%= form_for Thought.new do |f| %>
-  <%= f.text_field :text, placeholder: "Add A Thought" %>
-  <%= f.hidden_field :space_picture_id, :value => space_pic.id %>
-  <%= f.submit "Save Thought" %>
-<% end %>
+<div id="thought_form">
+    <%= form_for Thought.new, remote: true do |f| %>
+        <%= f.text_field :text, placeholder: "Add A Thought" %>
+        <%= f.hidden_field :space_picture_id, :value => space_pic.id %>
+      <%= f.submit "Save Thought" %>
+    <% end %>
+</div>
 <% end %>
 <p>
   <strong>Name:</strong>

@@ -1,4 +1,5 @@
 <%= form_for thought, remote: true do |f| %>
-  <%= f.text_field :text, placeholder: 'Add a thought' %>
+  <%= f.text_field :text %>
+  <%= f.hidden_field :space_picture_id, %>
   <!-- need to add space id field -->
 <% end %>

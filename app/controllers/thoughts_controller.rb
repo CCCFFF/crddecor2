@@ -32,6 +32,7 @@ class ThoughtsController < ApplicationController
         space_pic = SpacePicture.find_by(:id => @thought.space_picture_id)
         format.html { redirect_to space_url(space_pic.space_id), notice: 'Thought was successfully created.' }
         format.json { render action: 'show', status: :created, location: @thought }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @thought.errors, status: :unprocessable_entity }
@@ -46,6 +47,7 @@ class ThoughtsController < ApplicationController
       if @thought.update(thought_params)
         format.html { redirect_to @thought, notice: 'Thought was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @thought.errors, status: :unprocessable_entity }
