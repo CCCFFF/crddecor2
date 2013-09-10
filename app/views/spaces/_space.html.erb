@@ -1,7 +1,7 @@
 
 <div class="offset2 span8">
 
-      <%= space.category %>  <%= link_to "Edit Room", edit_space_url(space.id), :class => "btn btn-info btn-xs" %>
+      <%= space.category %>  <%= link_to "Edit Room", edit_space_url(space.id), :class => "btn btn-info btn-xs" %> <%= link_to "Add Picture", new_space_picture_url, :class => "btn btn-info btn-xs" %>
 
       <% space.space_pictures.each do |the_space_pic| %>
 

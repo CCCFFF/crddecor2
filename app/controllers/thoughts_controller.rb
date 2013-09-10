@@ -29,7 +29,8 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
+        space_pic = SpacePicture.find_by(:id => @thought.space_picture_id)
+        format.html { redirect_to space_url(space_pic.space_id), notice: 'Thought was successfully created.' }
         format.json { render action: 'show', status: :created, location: @thought }
       else
         format.html { render action: 'new' }
