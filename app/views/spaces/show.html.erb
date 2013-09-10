@@ -7,7 +7,7 @@
   <ul>
         <% pic_thoughts.each do |pic_thought| %>
     <li id="thought_<%= pic_thought.id %>" >
-      <%= pic_thought.text %>
+      <%= pic_thought.text %> <%= link_to '<i class="icon-trash"></i>'.html_safe, pic_thought, method: :delete, remote: true %>
       <% user = User.find_by(:id => pic_thought.user_id) %>
             <%= "Commenter: #{user.first_name} #{user.last_name}" %>
       </li>
