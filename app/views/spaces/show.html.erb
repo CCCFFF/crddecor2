@@ -6,7 +6,7 @@
     <% pic_thoughts = Thought.where(:space_picture_id => space_pic.id) %>
   <ul>
         <% pic_thoughts.each do |pic_thought| %>
-    <li>
+    <li id="thought_<%= pic_thought.id %>" >
       <%= pic_thought.text %>
       <% user = User.find_by(:id => pic_thought.user_id) %>
             <%= "Commenter: #{user.first_name} #{user.last_name}" %>
