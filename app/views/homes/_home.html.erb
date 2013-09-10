@@ -1,14 +1,18 @@
 
-
-
+<div class="row">
+<div class="col-md-12">
    <h4><%= home.name %></h4>
    <%= home.city%>,<%= home.state %>  <%= link_to "Edit Home", edit_home_url(home.id), :class => "btn-info btn-xs" %> <%= link_to "Add Home Picture", new_home_picture_url, :class => "btn btn-info btn-xs" %>  <%= link_to "Add New Space", new_space_url, :class => "btn-info btn-xs" %>
   <h4>Spaces for <%= "#{home.name}" %></h4>
-
+    <ul>
       <% home.spaces.each do |the_space| %>
-
-        <%= render '/spaces/space', :space => the_space %>
-
+        <li>
+          <div class="col-md-4">
+            <%= render '/spaces/space', :space => the_space %>
+          </div>
+        </li>
         <% end %>
-
+      </ul>
+</div>
+</div>
 
