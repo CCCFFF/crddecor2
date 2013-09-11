@@ -2,11 +2,11 @@
 <p id="notice"><%= notice %></p>
   <%= link_to "Edit Profile", edit_user_path(@user), :class => 'btn btn-primary' %>
   <%= link_to "Add New Home", new_home_url, :class => "btn btn-primary" %>
-  <div class="row-fluid">
+  <div>
     <h1>My Property</h1>
     <ul>
       <% @user.homes.each do |the_home| %>
-      <li class="span4">
+      <li>
         <div class="thumbnail">
           <% pic = HomePicture.find_by(:home_id => the_home.id) %>
         <% if pic.present? %>

@@ -1,13 +1,22 @@
 
       <%= image_tag space_pic.image, :class => "media-object user-show-pic" %> <%= link_to "Add Thought", new_thought_url, :class => "btn btn-info btn-xs" %>
       <div class="caption">
-        <ul>
+          <script>
+            $(document).ready(function() {
+              $('#toggle').click(function() {
+                $('li').toggle();
+                });
+             });
+
+          </script>
+        <p><a id="toggle" href="#"><h3>Thoughts</h3></a></p>
+        <ul class="t_lists">
 <% space_pic.thoughts.each do |the_thought| %>
           <li>
             <%= render '/thoughts/thought', :thought => the_thought %>
             </li>
                     <% end %>
-                  </ul>
+        </ul>
       <%#= render "/thoughts/form", :thought => thought  %>
 
     </div>
