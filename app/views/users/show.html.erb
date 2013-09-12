@@ -4,9 +4,9 @@
   <%= link_to "Add New Home", new_home_url, :class => "btn btn-primary" %>
   <div>
     <h1>My Property</h1>
-    <ul>
+
       <% @user.homes.each do |the_home| %>
-      <li>
+
         <div class="thumbnail">
           <% pic = HomePicture.find_by(:home_id => the_home.id) %>
         <% if pic.present? %>
@@ -15,10 +15,10 @@
          <strong>No Picture</strong>
         <% end %>
           <%= render '/homes/home', :home => the_home %>
-        </li>
+
       </div>
         <% end %>
-      </ul>
+
     </div>
     </div>
 
