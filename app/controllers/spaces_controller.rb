@@ -5,15 +5,15 @@ class SpacesController < ApplicationController
   # GET /spaces.json
   def index
 
-    @sort_direction = params[:sort] || 'asc'
-    @page_number = params[:page].to_i
-    @spaces = Space.order("category #{@sort_direction}").offset((@page_number - 1) * 10).limit(10)
+    #@sort_direction = params[:sort] || 'asc'
+    #@page_number = params[:page].to_i
+    @spaces = Space.all   #order("category #{@sort_direction}").offset((@page_number - 1) * 10).limit(10)
 
-    if @sort_direction == 'asc'
-      @sort_direction = 'desc'
-    else
-      @sort_direction = 'asc'
-    end
+    # if @sort_direction == 'asc'
+    #   @sort_direction = 'desc'
+    # else
+    #   @sort_direction = 'asc'
+    # end
 
 
     if params[:search_space_name].present?

@@ -5,15 +5,15 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
 
-    @sort_direction = params[:sort] || 'asc'
-    @page_number = params[:page].to_i
-    @users = User.order("last_name #{@sort_direction}").offset((@page_number - 1) * 10).limit(10)
+    # @sort_direction = params[:sort] || 'asc'
+    # @page_number = params[:page].to_i
+    @users = User.all  #order("last_name #{@sort_direction}").offset((@page_number - 1) * 10).limit(10)
 
-    if @sort_direction == 'asc'
-      @sort_direction = 'desc'
-    else
-      @sort_direction = 'asc'
-    end
+    # if @sort_direction == 'asc'
+    #   @sort_direction = 'desc'
+    # else
+    #   @sort_direction = 'asc'
+    # end
 
     if params[:search_user_name].present?
       @users = User.where('last_name LIKE ?', "%#{params[:search_user_name]}")
