@@ -1,9 +1,12 @@
 <h1>Spaces</h1>
 
 <% @page_number = 1 if @page_number < 1 %>
-
+<% if @page_number <= 1 %>
+<%= link_to "Next", "/spaces?page=#{@page_number + 1 }" %>
+<% else %>
 <%= link_to "Prev", "/spaces?page=#{@page_number - 1 }" %>
 <%= link_to "Next", "/spaces?page=#{@page_number + 1 }" %>
+<% end %>
 
 <table>
   <thead>
