@@ -15,9 +15,7 @@
       <th>Home</th>
       <th>Votes</th>
       <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+
     </tr>
   </thead>
 
@@ -26,7 +24,10 @@
       <tr>
         <% pic = SpacePicture.find_by(:space_id => space.id) %>
         <% if pic.present? %>
-        <td><%= image_tag pic.image %></td>
+        <td><%= link_to space do%>
+          <%= image_tag pic.image, :class => "pic_index" %>
+          <% end %>
+        </td>
         <% else %>
         <td>No Picture</td>
         <% end %>
@@ -50,9 +51,7 @@
           <% end %>
         <% end %>
       </td>
-        <td><%= link_to 'Show', space %></td>
-        <td><%= link_to 'Edit', edit_space_path(space) %></td>
-        <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
